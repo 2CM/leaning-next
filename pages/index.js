@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Layout, {siteTitle} from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
+import Date from '../components/date'
 
 export default class Home extends React.Component {
   render() {
@@ -26,11 +27,13 @@ export default class Home extends React.Component {
           <ul className={utilStyles.list}>
           {this.props.allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              {title}
-              <br />
-              {id}
-              <br />
-              {date}
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
+              <br/>
+              <small className={utilStyles.lightText}>
+                <Date dateString={date}/>
+              </small>
             </li>
           ))}
         </ul>
