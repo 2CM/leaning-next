@@ -1,0 +1,91 @@
+.message {
+    color: white;
+    border-bottom: 1px solid white;
+    padding: 8px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.pfp {
+    background-color: red;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+
+.self {
+    background-color: cyan;
+}
+
+.header:hover > .username {
+    text-decoration: underline;
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(-45deg, rgb(0,255,255), rgb(255, 128, 0));
+    display: flex;
+    justify-content: center;
+}
+
+.middlePanel {
+    width: 55vh;
+    height: 100%;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.messagesContainer {
+    /* flex-grow: 1; */
+    overflow: scroll;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.messageBox  {
+    display: flex;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    padding: 5px;
+}
+
+.messageInput {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px 0px 0px 5px;
+    background: rgb(40, 40, 40);
+    border: none;
+    outline: none;
+    padding: 5px;
+    color: white;
+}
+
+.messageSend {
+    width: 120px;
+    height: 100%;
+    border-radius: 0px 5px 5px 0px;
+    border: none;
+    outline: none;
+    background: rgb(67, 67, 67);
+    color: white;
+    cursor: pointer;
+}
+
+.messageSend:hover {
+    background: rgb(80, 80, 80);
+}
+
+.messageSend:active {
+    background: rgb(75, 75, 75);
+}
