@@ -5,12 +5,37 @@ import Message from "../components/message";
 import MessageBox from "../components/messsageBox";
 import styles from "../styles/chatroom.module.css";
 import { io } from "socket.io-client";
+import { isThisISOWeek } from "date-fns";
 
 var socket;
+
+const nameGeneration = {
+    adjectives: ["cool","awesome","stupid","screeching","epic","chaotic"],
+    nouns: ["gamer","child","human","person","chatter","programmer"]
+}
+
+function generateUsername() {
+    return (
+        nameGeneration.adjectives[Math.floor(Math.random()*nameGeneration.adjectives.length)] +
+        nameGeneration.nouns[Math.floor(Math.random()*nameGeneration.nouns.length)] +
+        Math.round(Math.random()*10000)
+    )
+}
 
 export default class Chatroom extends React.Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            user: {
+                name: generateUsername(),
+                color: `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`,
+            },
+            messages: [
+                //{content: "hi", user: {name: "gamer", color: "rgb(0,127,255)"}},
+                //{content: "hello", user: {name: "you", color: "rgb(255,127,127)"}},
+            ]
+        }
     }
 
     async componentDidMount() {
@@ -23,38 +48,39 @@ export default class Chatroom extends React.Component {
         socket.on("ping", function(data) {
             console.log("PONG!")
         })
+
+        socket.on("messageSent", this.onReceive.bind(this))
     }
 
     onSend(message) {
-        console.log(message)
+        console.log("sending "+message)
 
-        socket.emit("messageSent", {content: message})
+        socket.emit("messageSent", {content: message, user: this.state.user})
+    }
+
+    onReceive(message) {
+        console.log(message,"recieved in receive function")
+
+        console.log(this.state.messages, "messages")
+
+        this.setState({messages: [message].concat(this.state.messages)})
     }
 
     render() {
         return (
             <>
-                {/* <Head>
-                    <Script defer src="https://cdn.socket.io/4.4.1/socket.io.esm.min.js"/>
-                </Head> */}
                 <div className={styles.background}>
                     <div className={styles.middlePanel}>
                         <div className={styles.messagesContainer}>
-                            <Message content="hello"></Message>
-                            <Message content="hello you" self={true}></Message>
-                            <Message content="hello you" self={true}></Message>
-                            <Message content="hello you" self={true}></Message>
-                            <Message content="hello you" self={true}></Message>
-                            <Message content="hello you" self={true}></Message>
-                            <Message content="hello you" self={true}></Message>
-                            <Message content="hello you" self={true}></Message>
-                            <Message content="hello you" self={true}></Message>
-                            <Message content="hello you" self={true}></Message>
-                            <Message content="hello me" self={true}></Message>
-                            <Message content="hello me" self={true}></Message>
-                            <Message content="hello me" self={true}></Message>
+                            {
+                                this.state.messages.map(message => {
+                                    return (
+                                        <Message content={message.content} username={message.user.name} usercolor={message.user.color}/>
+                                    )
+                                })
+                            }
                         </div>
-                        <MessageBox onSend={this.onSend}></MessageBox>
+                        <MessageBox onSend={this.onSend.bind(this)}></MessageBox>
                     </div>
                 </div>
             </>

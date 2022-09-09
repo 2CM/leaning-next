@@ -15,17 +15,16 @@ export default function handler(req, res) {
         console.log("connection")
         socket.emit("ping")
 
-        setTimeout(() => {
-            console.log("pinged")
-            socket.emit("ping");
-        },2000)
-
         socket.on("ping", (data) => {
             console.log("ping! "+data);
         })
 
         socket.on("messageSent", (message) => {
-            console.log(message)
+            console.log("recieved message")
+            if(message.content && message.user && message.user.name && message.user.color) {
+                io.emit("messageSent", message)
+                console.log("emitting message")
+            }
         })
     });
 
