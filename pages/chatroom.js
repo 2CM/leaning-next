@@ -80,7 +80,7 @@ export default class Chatroom extends React.Component {
                                 })
                             }
                         </div>
-                        <MessageBox onSend={this.onSend.bind(this)}></MessageBox>
+                        <MessageBox username={this.state.user.name} onSend={this.onSend.bind(this)}></MessageBox>
                     </div>
                 </div>
             </>
