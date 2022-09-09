@@ -1,5 +1,7 @@
 import { Server } from "socket.io"
 
+var messages = [];
+
 export default function handler(req, res) {
     if (res.socket.server.io) {
         console.log("Already set up");
@@ -20,11 +22,17 @@ export default function handler(req, res) {
         })
 
         socket.on("messageSent", (message) => {
-            console.log("recieved message")
             if(message.content && message.user && message.user.name && message.user.color) {
                 io.emit("messageSent", message)
-                console.log("emitting message")
+                messages.push(message);
+                console.log("emitting message",message)
             }
+        })
+
+        socket.on("messageHistory", (chunk) => {
+            console.log(messages)
+
+            io.emit("messageHistory", messages.slice(-11,messages.length))
         })
     });
 

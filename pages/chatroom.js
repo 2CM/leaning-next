@@ -1,11 +1,8 @@
-import Head from "next/head";
-import Script from "next/script";
 import React from "react";
 import Message from "../components/message";
 import MessageBox from "../components/messsageBox";
 import styles from "../styles/chatroom.module.css";
 import { io } from "socket.io-client";
-import { isThisISOWeek } from "date-fns";
 
 var socket;
 
@@ -44,9 +41,16 @@ export default class Chatroom extends React.Component {
         socket = io();
 
         socket.emit("ping", "owo")
+        socket.emit("messageHistory", 0)
 
         socket.on("ping", function(data) {
             console.log("PONG!")
+        })
+
+        socket.on("messageHistory", (data) => {
+            console.log(data)
+
+            this.setState({messages: data.reverse()})
         })
 
         socket.on("messageSent", this.onReceive.bind(this))
