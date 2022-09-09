@@ -12,17 +12,17 @@ export default class MessageBox extends React.Component {
         var messageContent = this.inputRef.current.value;
         if(!messageContent) return;
 
-        console.log(messageContent);
-
         
         this.inputRef.current.value = "";
+
+        this.props.onSend(messageContent);
     }
 
     render() {
         return (
             <form className={styles.messageBox} action="javascript:void(0);" onSubmit={this.submit.bind(this)}>
                 <input className={styles.messageInput} type="text" placeholder="Message" ref={this.inputRef}/>
-                <input type="submit" className={styles.messageSend} value="Send"/>
+                <input type="submit" className={styles.messageSend} value={this.props.ef}/>
             </form>
         )
     }

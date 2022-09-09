@@ -10,12 +10,19 @@ export default function handler(req, res) {
     const io = new Server(res.socket.server);
     res.socket.server.io = io;
 
-    const onConnection = (socket) => {
-        socket.broadcast.emit("newIncomingMessage", "ee")
-    };
-
     // Define actions inside
-    io.on("connection", onConnection);
+    io.on("connection", (socket) => {
+        console.log("connection")
+        socket.emit("ping")
+
+        io.on("ping", (data) => {
+            console.log("ping! "+data);
+        })
+
+        io.on("messageSent", (message) => {
+            console.log(message.content)
+        })
+    });
 
     console.log("Setting up socket");
     res.end();
