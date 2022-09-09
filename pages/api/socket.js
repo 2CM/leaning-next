@@ -15,12 +15,17 @@ export default function handler(req, res) {
         console.log("connection")
         socket.emit("ping")
 
-        io.on("ping", (data) => {
+        setTimeout(() => {
+            console.log("pinged")
+            socket.emit("ping");
+        },2000)
+
+        socket.on("ping", (data) => {
             console.log("ping! "+data);
         })
 
-        io.on("messageSent", (message) => {
-            console.log(message.content)
+        socket.on("messageSent", (message) => {
+            console.log(message)
         })
     });
 

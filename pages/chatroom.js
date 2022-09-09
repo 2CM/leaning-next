@@ -14,11 +14,11 @@ export default class Chatroom extends React.Component {
     }
 
     async componentDidMount() {
-        console.log(socket)
-
         await fetch("/api/socket")
 
         socket = io();
+
+        socket.emit("ping", "owo")
 
         socket.on("ping", function(data) {
             console.log("PONG!")

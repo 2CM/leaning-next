@@ -12,6 +12,7 @@ export default class MessageBox extends React.Component {
         var messageContent = this.inputRef.current.value;
         if(!messageContent) return;
 
+        console.log("submit")
         
         this.inputRef.current.value = "";
 
