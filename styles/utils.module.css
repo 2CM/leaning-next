@@ -50,3 +50,32 @@
 .lightText {
     color: #666;
 }
+
+.homepageButtonHolder {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: 80px;
+    height: 80px;
+}
+
+.homepageButton {
+    background: rgb(0, 0, 0);
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    font-size: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+.homepageButton:hover {
+    background: rgb(40, 40, 40);
+}
+
+.homepageButton:active {
+    background: rgb(35, 35, 35);
+}

@@ -1,11 +1,12 @@
 import styles from "../styles/chatroom.module.css"
+import ProfilePicture from "./profilePicture"
 
-export default function Message({content, self}) {
+export default function Message({content, username, usercolor}) {
     return (
         <div className={styles.message}>
             <div className={styles.header}>
-                <div className={`${styles.pfp} ${self ? styles.self : null}`}></div>
-                <div className={styles.username}>{self ? "You" : "User"}</div>
+                <ProfilePicture color={usercolor}/>
+                <div className={styles.username}>{username}</div>
             </div>
             <div className={styles.content}>{content}</div>
         </div>
