@@ -3,6 +3,7 @@ import Message from "../components/message";
 import MessageBox from "../components/messsageBox";
 import styles from "../styles/chatroom.module.css";
 import { io } from "socket.io-client";
+import HomepageButton from "../components/homepageButton";
 
 var socket;
 
@@ -96,6 +97,7 @@ export default class Chatroom extends React.Component {
     render() {
         return (
             <>
+                <HomepageButton/>
                 <div className={styles.background}>
                     <div className={styles.middlePanel}>
                         <div ref={this.messagesContainer} className={styles.messagesContainer}>

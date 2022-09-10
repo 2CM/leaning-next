@@ -21,7 +21,10 @@ export default class Home extends React.Component {
             <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
           </p>
         </section>
-
+        <secion>
+          <h2>yoo i made something that isnt in the tutorial!</h2>
+          <p>its a simple <Link href="/chatroom">chatroom</Link> i made to figure out how to use socket.io with nextjs</p>
+        </secion>
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
           <h2 className={utilStyles.headingLg}>blog</h2>
           <ul className={utilStyles.list}>
