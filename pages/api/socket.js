@@ -30,9 +30,13 @@ export default function handler(req, res) {
         })
 
         socket.on("messageHistory", (chunk) => {
-            console.log(messages)
+            //console.log(messages)
 
-            io.emit("messageHistory", messages.slice(-11,messages.length))
+            console.log("message history "+chunk,messages.length);
+
+            if(chunk*16 < messages.length) {
+                io.emit("messageHistory", messages.slice(-16-chunk*16,messages.length-chunk*16))
+            }
         })
     });
 
