@@ -24,6 +24,7 @@ export default class Home extends React.Component {
         <secion>
           <h2>yoo i made something that isnt in the tutorial!</h2>
           <p>its a simple <Link href="/chatroom">chatroom</Link> i made to figure out how to use socket.io with nextjs</p>
+          <p>okay so apparently websockets dont work on vercel :/</p>
         </secion>
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
           <h2 className={utilStyles.headingLg}>blog</h2>
