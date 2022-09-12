@@ -12,10 +12,10 @@ const variants = {
     },
     in: {
         opacity: 1,
-        transform: "scale(100%)",
+        transform: ["scale(0%)", "scale(100%)"],
         transition: {
             duration: 0.75,
-            easing: "linear"
+            easing: "linear",
         }
     }
 }
