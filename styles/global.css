@@ -18,6 +18,10 @@ html, body {
   box-sizing: border-box;
 }
 
+.effect {
+  overflow: hidden;
+}
+
 a {
   color: #0070f3;
   text-decoration: none;

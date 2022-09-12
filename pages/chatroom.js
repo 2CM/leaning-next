@@ -96,7 +96,7 @@ export default class Chatroom extends React.Component {
 
     render() {
         return (
-            <>
+            <div className="page">
                 <HomepageButton/>
                 <div className={styles.background}>
                     <div className={styles.middlePanel}>
@@ -112,7 +112,7 @@ export default class Chatroom extends React.Component {
                         <MessageBox username={this.state.user.name} onSend={this.onSend.bind(this)}></MessageBox>
                     </div>
                 </div>
-            </>
+            </div>
         )
     }
 }
