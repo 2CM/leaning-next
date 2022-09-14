@@ -28,3 +28,8 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+/public/voronoi.mp4
+/public/voronoi.gif
+/public/images/voronoi.svg
+/public/images/voronoiReverse.svg

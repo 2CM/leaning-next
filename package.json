@@ -19,5 +19,8 @@
     "remark-html": "^15.0.1",
     "socket.io": "^4.5.2",
     "socket.io-client": "^4.5.2"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.3.1"
   }
 }
