@@ -9,7 +9,7 @@ import Date from '../components/date'
 export default class Home extends React.Component {
   render() {
     return (
-      <Layout home>
+      <Layout home className="page">
         <Head>
           <title>Create Next App</title>
           <link rel="icon" href="/favicon.ico" />

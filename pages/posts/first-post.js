@@ -6,7 +6,7 @@ import Layout from "../../components/layout";
 
 export default class FirstPost extends React.Component {
     render() {
-        return <Layout>
+        return <Layout className="page">
             <Head>
                 <title>first post</title>
                 <Script
