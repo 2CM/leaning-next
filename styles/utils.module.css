@@ -57,6 +57,7 @@
     left: 15px;
     width: 80px;
     height: 80px;
+    z-index: 100;
 }
 
 .homepageButton {
@@ -88,4 +89,10 @@
     position: fixed;
     top: 0;
     left: 0;
+}
+
+.middle {
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }

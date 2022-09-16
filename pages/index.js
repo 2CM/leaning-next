@@ -26,6 +26,7 @@ export default class Home extends React.Component {
           <p>its a simple <Link href="/chatroom">chatroom</Link> i made to figure out how to use socket.io with nextjs</p>
           <p>okay so apparently websockets dont work on vercel :/</p>
         </secion>
+        <section><p>i also made a parallax scroll <Link href="/parallax">thing</Link></p></section>
         <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
           <h2 className={utilStyles.headingLg}>blog</h2>
           <ul className={utilStyles.list}>
